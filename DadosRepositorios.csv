@@ -1,0 +1,101 @@
+Título do Projeto;Data de criacao;Estrelas;Linguagem principal;Total de Issues;Total de Issues Abertas;Total de Issues Fechadas;URL do repositorio
+tensorflow/tensorflow;07/11/15 01:19:20;149597;C++;28385;3839;24546;https://github.com/tensorflow/tensorflow
+keras-team/keras;28/03/15 00:35:42;50086;Dockerfile;10294;3093;7201;https://github.com/keras-team/keras
+pytorch/pytorch;13/08/16 05:26:41;43429;C++;16824;5087;11737;https://github.com/pytorch/pytorch
+scikit-learn/scikit-learn;17/08/10 09:43:38;42722;Python;7977;1537;6440;https://github.com/scikit-learn/scikit-learn
+aymericdamien/TensorFlow-Examples;11/11/15 14:21:19;39132;Jupyter Notebook;218;152;66;https://github.com/aymericdamien/TensorFlow-Examples
+tesseract-ocr/tesseract;12/08/14 18:04:59;36998;C++;1932;299;1633;https://github.com/tesseract-ocr/tesseract
+ageitgey/face_recognition;03/03/17 21:52:39;36852;Python;1057;537;520;https://github.com/ageitgey/face_recognition
+deepfakes/faceswap;19/12/17 09:44:13;32948;Python;640;5;635;https://github.com/deepfakes/faceswap
+BVLC/caffe;12/09/13 18:39:48;30980;C++;4734;865;3869;https://github.com/BVLC/caffe
+Avik-Jain/100-Days-Of-ML-Code;05/07/18 09:11:43;30392;None;0;0;0;https://github.com/Avik-Jain/100-Days-Of-ML-Code
+JuliaLang/julia;21/04/11 07:01:50;30104;Julia;18721;3129;15592;https://github.com/JuliaLang/julia
+binhnguyennus/awesome-scalability;27/12/17 03:46:40;27652;None;0;0;0;https://github.com/binhnguyennus/awesome-scalability
+madewithml/basics;05/11/18 03:44:27;24974;Jupyter Notebook;19;0;19;https://github.com/madewithml/basics
+ZuzooVn/machine-learning-for-software-engineers;09/10/16 21:20:25;24378;None;17;14;3;https://github.com/ZuzooVn/machine-learning-for-software-engineers
+terryum/awesome-deep-learning-papers;03/06/16 06:48:30;22118;TeX;25;14;11;https://github.com/terryum/awesome-deep-learning-papers
+ageron/handson-ml;16/02/16 19:48:39;21361;Jupyter Notebook;514;113;401;https://github.com/ageron/handson-ml
+dmlc/xgboost;06/02/14 17:28:03;20012;C++;3700;231;3469;https://github.com/dmlc/xgboost
+fastai/fastai;09/09/17 17:43:36;19749;Jupyter Notebook;1204;50;1154;https://github.com/fastai/fastai
+donnemartin/data-science-ipython-notebooks;23/01/15 19:38:29;19680;Python;28;8;20;https://github.com/donnemartin/data-science-ipython-notebooks
+fengdu78/Coursera-ML-AndrewNg-Notes;04/11/17 10:04:08;19245;HTML;49;38;11;https://github.com/fengdu78/Coursera-ML-AndrewNg-Notes
+d2l-ai/d2l-zh;23/08/17 04:40:24;19018;Python;0;0;0;https://github.com/d2l-ai/d2l-zh
+CMU-Perceptual-Computing-Lab/openpose;24/04/17 14:06:31;18974;C++;1473;39;1434;https://github.com/CMU-Perceptual-Computing-Lab/openpose
+eriklindernoren/ML-From-Scratch;05/02/17 12:11:23;18280;Python;55;22;33;https://github.com/eriklindernoren/ML-From-Scratch
+explosion/spaCy;03/07/14 15:15:40;17500;Python;4281;147;4134;https://github.com/explosion/spaCy
+sebastianruder/NLP-progress;22/06/18 17:43:55;17026;Python;84;20;64;https://github.com/sebastianruder/NLP-progress
+microsoft/CNTK;26/11/15 09:52:06;16897;C++;3257;745;2512;https://github.com/microsoft/CNTK
+ChristosChristofidis/awesome-deep-learning;02/01/15 19:28:35;16046;None;14;1;13;https://github.com/ChristosChristofidis/awesome-deep-learning
+MLEveryday/100-Days-Of-ML-Code;05/08/18 13:32:48;15848;Jupyter Notebook;47;8;39;https://github.com/MLEveryday/100-Days-Of-ML-Code
+mozilla/DeepSpeech;02/06/16 15:04:53;15536;C++;1857;75;1782;https://github.com/mozilla/DeepSpeech
+datawhalechina/pumpkin-book;22/12/18 05:05:24;15384;None;55;17;38;https://github.com/datawhalechina/pumpkin-book
+Developer-Y/cs-video-courses;21/10/16 17:02:11;15382;None;22;3;19;https://github.com/Developer-Y/cs-video-courses
+mxgmn/WaveFunctionCollapse;30/09/16 11:53:17;15344;C#;38;0;38;https://github.com/mxgmn/WaveFunctionCollapse
+zziz/pwc;02/09/18 12:06:52;14926;None;21;16;5;https://github.com/zziz/pwc
+oxford-cs-deepnlp-2017/lectures;06/02/17 11:32:46;14783;None;18;11;7;https://github.com/oxford-cs-deepnlp-2017/lectures
+trekhleb/homemade-machine-learning;01/11/18 04:34:19;14574;Jupyter Notebook;18;11;7;https://github.com/trekhleb/homemade-machine-learning
+academic/awesome-datascience;05/07/14 07:07:43;14385;None;34;0;34;https://github.com/academic/awesome-datascience
+tensorflow/tfjs;05/03/18 05:41:02;14109;TypeScript;2474;435;2039;https://github.com/tensorflow/tfjs
+ray-project/ray;25/10/16 19:38:30;13609;Python;4827;1293;3534;https://github.com/ray-project/ray
+kailashahirwar/cheatsheets-ai;24/05/17 12:06:56;13558;None;14;6;8;https://github.com/kailashahirwar/cheatsheets-ai
+ty4z2008/Qix;20/04/14 11:03:15;13364;None;23;0;23;https://github.com/ty4z2008/Qix
+google-research/google-research;04/10/18 18:42:48;13306;Jupyter Notebook;284;190;94;https://github.com/google-research/google-research
+PaddlePaddle/Paddle;15/08/16 06:59:08;13139;Python;11392;1412;9980;https://github.com/PaddlePaddle/Paddle
+emilwallner/Screenshot-to-code;16/10/17 11:41:48;12885;HTML;48;5;43;https://github.com/emilwallner/Screenshot-to-code
+virgili0/Virgilio;12/03/19 18:45:36;12837;Jupyter Notebook;27;8;19;https://github.com/virgili0/Virgilio
+zergtant/pytorch-handbook;03/12/18 02:57:04;12821;Jupyter Notebook;62;34;28;https://github.com/zergtant/pytorch-handbook
+spmallick/learnopencv;17/02/15 08:00:51;12298;Jupyter Notebook;202;134;68;https://github.com/spmallick/learnopencv
+amark/gun;31/07/14 15:52:10;12256;JavaScript;588;176;412;https://github.com/amark/gun
+lutzroeder/netron;26/12/10 12:53:43;11751;JavaScript;551;15;536;https://github.com/lutzroeder/netron
+microsoft/LightGBM;05/08/16 05:45:50;11695;C++;1899;74;1825;https://github.com/microsoft/LightGBM
+streamlit/streamlit;24/08/19 00:14:52;11612;Python;1305;466;839;https://github.com/streamlit/streamlit
+RaRe-Technologies/gensim;10/02/11 07:43:04;11283;Python;1533;309;1224;https://github.com/RaRe-Technologies/gensim
+keon/awesome-nlp;01/12/15 11:11:33;11106;None;49;1;48;https://github.com/keon/awesome-nlp
+afshinea/stanford-cs-229-machine-learning;04/08/18 23:01:00;11027;None;19;11;8;https://github.com/afshinea/stanford-cs-229-machine-learning
+rasbt/python-machine-learning-book;07/08/15 20:39:29;10929;Jupyter Notebook;48;5;43;https://github.com/rasbt/python-machine-learning-book
+bharathgs/Awesome-pytorch-list;01/03/17 16:58:16;10886;None;12;1;11;https://github.com/bharathgs/Awesome-pytorch-list
+ujjwalkarn/Machine-Learning-Tutorials;12/09/15 14:51:38;10749;None;7;4;3;https://github.com/ujjwalkarn/Machine-Learning-Tutorials
+ramitsurana/awesome-kubernetes;15/10/15 12:14:48;10705;Shell;59;2;57;https://github.com/ramitsurana/awesome-kubernetes
+slundberg/shap;22/11/16 19:17:08;10582;Jupyter Notebook;1269;790;479;https://github.com/slundberg/shap
+tensorflow/tensor2tensor;15/06/17 16:57:39;10522;Python;1197;538;659;https://github.com/tensorflow/tensor2tensor
+gunthercox/ChatterBot;28/09/14 14:49:00;10450;Python;1395;180;1215;https://github.com/gunthercox/ChatterBot
+alex000kim/nsfw_data_scraper;11/01/19 02:21:40;10418;Shell;31;6;25;https://github.com/alex000kim/nsfw_data_scraper
+horovod/horovod;09/08/17 19:39:59;10251;Python;1524;698;826;https://github.com/horovod/horovod
+fastai/fastbook;28/02/20 19:26:47;10242;Jupyter Notebook;90;28;62;https://github.com/fastai/fastbook
+hangtwenty/dive-into-machine-learning;22/02/15 23:48:16;10198;None;52;6;46;https://github.com/hangtwenty/dive-into-machine-learning
+aleju/imgaug;10/07/15 20:31:33;10116;Python;402;202;200;https://github.com/aleju/imgaug
+RasaHQ/rasa;14/10/16 12:27:49;9969;Python;4542;402;4140;https://github.com/RasaHQ/rasa
+apple/turicreate;01/12/17 00:42:04;9933;C++;1680;449;1231;https://github.com/apple/turicreate
+chiphuyen/stanford-tensorflow-tutorials;05/11/16 18:21:51;9715;Python;106;65;41;https://github.com/chiphuyen/stanford-tensorflow-tutorials
+PyTorchLightning/pytorch-lightning;31/03/19 00:45:57;9544;Python;2170;336;1834;https://github.com/PyTorchLightning/pytorch-lightning
+kubeflow/kubeflow;30/11/17 18:44:19;9533;Jsonnet;2887;212;2675;https://github.com/kubeflow/kubeflow
+davisking/dlib;29/01/14 00:45:33;9526;C++;1807;42;1765;https://github.com/davisking/dlib
+flairNLP/flair;11/06/18 11:04:18;9487;Python;1330;102;1228;https://github.com/flairNLP/flair
+tflearn/tflearn;31/03/16 12:05:53;9459;Python;904;552;352;https://github.com/tflearn/tflearn
+esimov/caire;08/01/18 19:23:04;9387;Go;44;1;43;https://github.com/esimov/caire
+hindupuravinash/the-gan-zoo;14/04/17 16:45:24;9387;Python;30;14;16;https://github.com/hindupuravinash/the-gan-zoo
+nltk/nltk;07/09/09 10:53:58;9349;Python;1429;229;1200;https://github.com/nltk/nltk
+google/mediapipe;13/06/19 19:16:41;9328;C++;1178;220;958;https://github.com/google/mediapipe
+onnx/onnx;07/09/17 04:53:45;9216;PureBasic;1270;388;882;https://github.com/onnx/onnx
+ddbourgin/numpy-ml;06/04/19 22:29:49;8988;Python;31;11;20;https://github.com/ddbourgin/numpy-ml
+botpress/botpress;16/11/16 21:57:59;8911;TypeScript;1135;120;1015;https://github.com/botpress/botpress
+TheAlgorithms/C-Plus-Plus;16/07/16 10:19:45;8910;C++;142;33;109;https://github.com/TheAlgorithms/C-Plus-Plus
+vahidk/EffectiveTensorflow;01/08/17 06:00:56;8646;None;18;0;18;https://github.com/vahidk/EffectiveTensorflow
+janishar/mit-deep-learning-book-pdf;07/04/17 10:46:50;8646;Java;13;7;6;https://github.com/janishar/mit-deep-learning-book-pdf
+donnemartin/awesome-aws;12/10/15 12:02:47;8596;Python;18;5;13;https://github.com/donnemartin/awesome-aws
+deepmind/sonnet;03/04/17 11:34:35;8560;Python;147;13;134;https://github.com/deepmind/sonnet
+MorvanZhou/tutorials;29/05/16 13:29:44;8560;Python;66;12;54;https://github.com/MorvanZhou/tutorials
+JaidedAI/EasyOCR;14/03/20 11:46:39;8556;Python;193;56;137;https://github.com/JaidedAI/EasyOCR
+tensorflow/tfjs-core;02/08/17 14:45:47;8530;TypeScript;0;0;0;https://github.com/tensorflow/tfjs-core
+Hvass-Labs/TensorFlow-Tutorials;26/06/16 14:43:21;8527;Jupyter Notebook;107;1;106;https://github.com/Hvass-Labs/TensorFlow-Tutorials
+kmario23/deep-learning-drizzle;26/11/18 01:17:36;8519;None;30;1;29;https://github.com/kmario23/deep-learning-drizzle
+microsoft/recommenders;19/09/18 10:06:07;8518;Python;509;97;412;https://github.com/microsoft/recommenders
+facebookarchive/caffe2;25/06/15 18:23:47;8445;Shell;1311;580;731;https://github.com/facebookarchive/caffe2
+hanxiao/bert-as-service;12/11/18 10:48:50;8420;Python;460;217;243;https://github.com/hanxiao/bert-as-service
+zalandoresearch/fashion-mnist;25/08/17 12:05:15;8396;Python;93;23;70;https://github.com/zalandoresearch/fashion-mnist
+rushter/MLAlgorithms;05/10/16 06:46:45;8196;Python;21;6;15;https://github.com/rushter/MLAlgorithms
+microsoft/nni;01/06/18 05:51:44;8160;Python;994;222;772;https://github.com/microsoft/nni
+lexfridman/mit-deep-learning;08/01/17 00:52:01;8034;Jupyter Notebook;8;1;7;https://github.com/lexfridman/mit-deep-learning
+d2l-ai/d2l-en;09/10/18 01:04:37;7837;Python;97;20;77;https://github.com/d2l-ai/d2l-en
+GetStream/Winds;19/09/16 17:02:13;7764;JavaScript;303;57;246;https://github.com/GetStream/Winds
+clips/pattern;03/05/11 15:29:01;7633;Python;192;117;75;https://github.com/clips/pattern
