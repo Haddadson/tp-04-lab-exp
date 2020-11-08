@@ -11,12 +11,12 @@ import requests
 
 
 def issues():
-    fieldnames = ["Titulo do Projeto", "Titulo da Issue", "ID", "Total de comentarios",
-                  "Estado", "Data de criacao", "Data de atualizacao", "Data de conclusao", "URL da issue"]
+    issuesHeader = ["Titulo do Projeto", "Titulo da Issue", "ID", "Total de comentarios",
+                    "Estado", "Data de criacao", "Data de atualizacao", "Data de conclusao", "URL da issue"]
 
     with open("DadosIssuesTeste.csv", "r") as file:
-        for repo in DictReader(file, fieldnames, delimiter=";"):
-            if(repo[fieldnames[0]] == fieldnames[0]):
+        for repo in DictReader(file, issuesHeader, delimiter=";"):
+            if(repo[issuesHeader[0]] == issuesHeader[0]):
                 continue
             yield repo
 
@@ -60,8 +60,6 @@ def main():
     impacto_issues = 0
     # RQ03: Existe alguma relação entre a popularidade dos repositórios e o buzz gerado?
     dados_repositorios = set_repositories_data()
-    perguntas_issues = []
-    estrelas_vs_discussoes = 0
     # RQ04: Issues marcadas como bugs tendem a gerar muitas perguntas?
     # total_perguntas_issue
     # RQ05: Issues relacionadas a perguntas são fechadas quando respostas são aceitas?
@@ -73,9 +71,10 @@ def main():
 
     with open(sys.path[0] + "\\DadosPerguntas.csv", 'a+', encoding='utf-8') as issues_file:
         issues_file.write(
-            "Titulo do Projeto" + ";" + "ID Issue" + ";" + "Total Perguntas" + ";" +
-            "Total Respostas" + ";" + "Total Respostas/Total Perguntas" + ";" +
-            "Total perguntas apos issue" + ";" + "Pergunta criada primeiro em" + "\n"
+            "Titulo do Projeto;ID Issue;ID Pergunta;Titulo;Respondida;Respostas;Data da criação;Link;Tags\n"
+            # "Titulo do Projeto" + ";" + "ID Issue" + ";" + "Total Perguntas" + ";" +
+            # "Total Respostas" + ";" + "Total Respostas/Total Perguntas" + ";" +
+            # "Total perguntas apos issue" + ";" + "Pergunta criada primeiro em" + "\n"
         )
         for issue in issues():
             total_perguntas_apos_issue = 0
@@ -83,11 +82,15 @@ def main():
 
             if(issue["Titulo do Projeto"] is not None and issue["ID"] is not None):
                 result = call(issue["Titulo do Projeto"], issue["ID"])
+
                 total_geral_perguntas += len(result["items"])
                 dados_repositorios[issue["Titulo do Projeto"]
                                    ]['perguntas'] += len(result["items"])
 
                 for pergunta in result["items"]:
+                    issues_file.write(
+                        f"{issue['Titulo do Projeto']};{issue['ID']};{str(pergunta['question_id'])};{pergunta['title']};{str(pergunta['is_answered'])};{str(pergunta['answer_count'])};{str(dateparser.parse(str(pergunta['creation_date'])))};{pergunta['link']};{', '.join(pergunta['tags'])};\n")
+
                     total_geral_respostas += pergunta["answer_count"]
                     dados_repositorios[issue["Titulo do Projeto"]
                                        ]['respostas'] += pergunta["answer_count"]
