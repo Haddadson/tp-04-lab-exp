@@ -94,8 +94,9 @@ def main():
                     total_geral_respostas += pergunta["answer_count"]
                     dados_repositorios[issue["Titulo do Projeto"]
                                        ]['respostas'] += pergunta["answer_count"]
-
-                    if(pergunta['accepted_answer_id'] is not None):
+                                       
+                    pergunta_possui_resposta_aceita = 'accepted_answer_id' in pergunta
+                    if(pergunta_possui_resposta_aceita and pergunta['accepted_answer_id'] is not None):
                         qtd_respostas_por_pergunta.append(pergunta['answer_count'])
 
                     issue_created_at = dateparser.parse(
