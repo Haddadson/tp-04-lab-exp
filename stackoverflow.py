@@ -8,7 +8,7 @@ from json import dump, loads
 
 import dateparser
 import requests
-
+import statistics
 
 def issues():
     issuesHeader = ["Titulo do Projeto", "Titulo da Issue", "ID", "Total de comentarios",
@@ -60,8 +60,8 @@ def main():
     impacto_issues = 0
     # RQ03: Existe alguma relação entre a popularidade dos repositórios e o buzz gerado?
     dados_repositorios = set_repositories_data()
-    # RQ04: Issues marcadas como bugs tendem a gerar muitas perguntas?
-    # total_perguntas_issue
+    # RQ04: Perguntas com respostas aceitas do SO relacionadas à issues do GitHub tendem a ter mais de uma resposta ?
+    qtd_respostas_por_pergunta = []
     # RQ05: Issues relacionadas a perguntas são fechadas quando respostas são aceitas?
     issues_fechadas = 0
     issues_fechadas_apos_resposta = 0
@@ -94,6 +94,9 @@ def main():
                     total_geral_respostas += pergunta["answer_count"]
                     dados_repositorios[issue["Titulo do Projeto"]
                                        ]['respostas'] += pergunta["answer_count"]
+
+                    if(pergunta['accepted_answer_id'] is not None):
+                        qtd_respostas_por_pergunta.append(pergunta['answer_count'])
 
                     issue_created_at = dateparser.parse(
                         issue['Data de criacao'])
@@ -133,9 +136,12 @@ def main():
     issues_resolvidas_pelo_SO = (
         issues_fechadas_apos_resposta / issues_fechadas) * 100
 
+    mediana_respostas = statistics.median(qtd_respostas_por_pergunta)
+
     print(f"RQ1: {total_geral_perguntas}")
     print(f"RQ2: {impacto_issues}")
     print(f"RQ3: resultados salvos em arquivo")
+    print(f"RQ4: {mediana_respostas}")
     print(f"RQ5: {issues_resolvidas_pelo_SO}%")
 
 
