@@ -14,28 +14,43 @@ def issues():
     issuesHeader = ["Titulo do Projeto", "Titulo da Issue", "ID", "Total de comentarios",
                     "Estado", "Data de criacao", "Data de atualizacao", "Data de conclusao", "URL da issue"]
 
-    with open("DadosIssuesTeste.csv", "r") as file:
-        for repo in DictReader(file, issuesHeader, delimiter=";"):
-            if(repo[issuesHeader[0]] == issuesHeader[0]):
-                continue
-            yield repo
+    try:
+        with open("DadosIssues.csv", "r", encoding='utf-8') as file:        
+            for repo in DictReader(file, issuesHeader, delimiter=";"):
+                try:
+                    if(repo[issuesHeader[0]] == issuesHeader[0]):
+                        continue
+                    yield repo
+                except Exception as e:
+                    print(e)
+                    continue
+    except Exception as e:
+        print(e)
+        return None
 
 
 def call(nameWithOwner, issue):
     try:
+        api_key = None #INSERIR KEY DA API DO STACK EXCHANGE
         request = requests.get(
-            f"https://api.stackexchange.com/2.2/search/advanced?order=desc&sort=votes&q={nameWithOwner}/{issue}&site=stackoverflow&filter=withBody")
+            f"https://api.stackexchange.com/2.2/search/advanced?order=desc&sort=votes&q={nameWithOwner}/{issue}&site=stackoverflow&key={api_key}&pagesize=100&filter=withBody")
         # f"https://api.stackexchange.com/2.2/search/advanced?order=desc&sort=votes&q={nameWithOwner}/{issue}&site=stackoverflow&filter=withBody&key=ddMUWlWLoVx1S031D4HRqA((")
         while (request.status_code != 200):
             print("Erro ao chamar API, tentando novamente...")
             print("Query failed to run by returning code of {}".format(
                 request.status_code))
-            time.sleep(5)
+            time.sleep(8)
             request = requests.get(
-                f"https://api.stackexchange.com/2.2/search/advanced?order=desc&sort=votes&q={nameWithOwner}/{issue}&site=stackoverflow&filter=withBody")
+                f"https://api.stackexchange.com/2.2/search/advanced?order=desc&sort=votes&q={nameWithOwner}/{issue}&site=stackoverflow&key={api_key}&pagesize=100&filter=withBody")
             # f"https://api.stackexchange.com/2.2/search/advanced?order=desc&sort=votes&q={nameWithOwner}/{issue}&site=stackoverflow&filter=withBody&key=ddMUWlWLoVx1S031D4HRqA((")
 
-        return request.json()
+        result = request.json()
+        print("Cota de requests restante:" + str(result['quota_remaining']))
+
+        if('backoff' in result and result['backoff'] is not None):
+            time.sleep(result['backoff'])
+    
+        return result
 
     except Exception as e:
         print(e)
@@ -44,7 +59,7 @@ def call(nameWithOwner, issue):
 
 def set_repositories_data():
     data = {}
-    with open("DadosRepositorios.csv", "r") as file:
+    with open("DadosRepositorios.csv", "r", encoding='utf-8') as file:
         next(file)
         csv_data = csv.reader(file, delimiter=';')
         for repo in csv_data:
@@ -81,69 +96,72 @@ def main():
             # "Total perguntas apos issue" + ";" + "Pergunta criada primeiro em" + "\n"
         )
         for issue in issues():
+            try:
+                if(issue is not None):
+                    data_criacao_issue = dateparser.parse(issue['Data de criacao'])
 
-            data_criacao_issue = dateparser.parse(
-                        issue['Data de criacao'])
+                    menor_data_criacao_pergunta = None
 
-            menor_data_criacao_pergunta = None
+                    if(issue["Titulo do Projeto"] is not None and issue["ID"] is not None):
+                        result = call(issue["Titulo do Projeto"], issue["ID"])
 
-            if(issue["Titulo do Projeto"] is not None and issue["ID"] is not None):
-                result = call(issue["Titulo do Projeto"], issue["ID"])
+                        total_geral_perguntas += len(result["items"])
+                        dados_repositorios[issue["Titulo do Projeto"]
+                                        ]['perguntas'] += len(result["items"])
+                        for pergunta in result["items"]:
+                            try:
+                                issues_file.write(
+                                    f"{issue['Titulo do Projeto']};{issue['ID']};{str(pergunta['question_id'])};{pergunta['title']};{str(pergunta['is_answered'])};{str(pergunta['answer_count'])};{str(dateparser.parse(str(pergunta['creation_date'])))};{pergunta['link']};{', '.join(pergunta['tags'])};\n")
 
-                total_geral_perguntas += len(result["items"])
-                dados_repositorios[issue["Titulo do Projeto"]
-                                   ]['perguntas'] += len(result["items"])
+                                total_geral_respostas += pergunta["answer_count"]
+                                dados_repositorios[issue["Titulo do Projeto"]
+                                                ]['respostas'] += pergunta["answer_count"]
+                                                
+                                pergunta_possui_resposta_aceita = 'accepted_answer_id' in pergunta
 
-                for pergunta in result["items"]:
-                    issues_file.write(
-                        f"{issue['Titulo do Projeto']};{issue['ID']};{str(pergunta['question_id'])};{pergunta['title']};{str(pergunta['is_answered'])};{str(pergunta['answer_count'])};{str(dateparser.parse(str(pergunta['creation_date'])))};{pergunta['link']};{', '.join(pergunta['tags'])};\n")
+                                if(pergunta_possui_resposta_aceita and pergunta['accepted_answer_id'] is not None):
+                                    qtd_respostas_por_pergunta.append(pergunta['answer_count'])
 
-                    total_geral_respostas += pergunta["answer_count"]
-                    dados_repositorios[issue["Titulo do Projeto"]
-                                       ]['respostas'] += pergunta["answer_count"]
-                                       
-                    pergunta_possui_resposta_aceita = 'accepted_answer_id' in pergunta
+                                if(issue["Estado"] == "CLOSED"):
+                                    issues_fechadas += 1
+                                    issue_closed_at = dateparser.parse(
+                                        issue['Data de conclusao'])
+                                else:
+                                    issue_closed_at = None
 
-                    if(pergunta_possui_resposta_aceita and pergunta['accepted_answer_id'] is not None):
-                        qtd_respostas_por_pergunta.append(pergunta['answer_count'])
+                                question_created_at = datetime.fromtimestamp(
+                                    pergunta["creation_date"])
 
-                    if(issue["Estado"] == "CLOSED"):
-                        issues_fechadas += 1
-                        issue_closed_at = dateparser.parse(
-                            issue['Data de conclusao'])
-                    else:
-                        issue_closed_at = None
+                                if(data_criacao_issue is not None and question_created_at is not None and question_created_at < data_criacao_issue):
+                                    total_perguntas_antes_issue += 1
+                                elif(data_criacao_issue is not None and question_created_at is not None and question_created_at > data_criacao_issue):
+                                    total_perguntas_apos_issue += 1
 
-                    question_created_at = datetime.fromtimestamp(
-                        pergunta["creation_date"])
+                                if(menor_data_criacao_pergunta is None or question_created_at < menor_data_criacao_pergunta):
+                                    menor_data_criacao_pergunta = question_created_at
 
-                    if(question_created_at < data_criacao_issue):
-                        total_perguntas_antes_issue += 1
-                    elif(question_created_at > data_criacao_issue):
-                        total_perguntas_apos_issue += 1
+                                if(pergunta["is_answered"]):
+                                    question_answered_at = datetime.fromtimestamp(
+                                        pergunta["last_activity_date"])
+                                else:
+                                    question_answered_at = None
 
-                    if(menor_data_criacao_pergunta is None or question_created_at < menor_data_criacao_pergunta):
-                        menor_data_criacao_pergunta = question_created_at
-
-                    if(pergunta["is_answered"]):
-                        question_answered_at = datetime.fromtimestamp(
-                            pergunta["last_activity_date"])
-                    else:
-                        question_answered_at = None
-
-                    if(issue_closed_at is not None and question_answered_at is not None):
-                        dif = issue_closed_at - question_answered_at
-                        if(dif.days <= 7):
-                            issues_fechadas_apos_resposta += 1
-
-                if(menor_data_criacao_pergunta is not None and menor_data_criacao_pergunta < data_criacao_issue):
-                    issues_criadas_apos += 1
-                elif(menor_data_criacao_pergunta is not None and menor_data_criacao_pergunta > data_criacao_issue):
-                    issues_criadas_antes +=1
-
-        #Sleep para evitar muitas chamadas na API do SO
-        time.sleep(3)
-
+                                if(issue_closed_at is not None and question_answered_at is not None):
+                                    dif = issue_closed_at - question_answered_at
+                                    if(dif.days <= 7):
+                                        issues_fechadas_apos_resposta += 1
+                            except Exception as e:
+                                print(e)
+                                continue
+                            
+                        if(menor_data_criacao_pergunta is not None and menor_data_criacao_pergunta < data_criacao_issue):
+                            issues_criadas_apos += 1
+                        elif(menor_data_criacao_pergunta is not None and menor_data_criacao_pergunta > data_criacao_issue):
+                            issues_criadas_antes +=1
+           
+            except Exception as e:
+                print(e)
+                continue
 
     impacto_issues = total_geral_respostas / total_geral_perguntas
 
