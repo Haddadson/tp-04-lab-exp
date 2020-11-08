@@ -66,6 +66,10 @@ def main():
     issues_fechadas = 0
     issues_fechadas_apos_resposta = 0
     # RQ06: Os usuários costumam fazer perguntas no SO?
+    issues_criadas_antes = 0
+    issues_criadas_apos = 0
+    total_perguntas_apos_issue = 0
+    total_perguntas_antes_issue = 0
 
     total_geral_respostas = 0
 
@@ -77,8 +81,11 @@ def main():
             # "Total perguntas apos issue" + ";" + "Pergunta criada primeiro em" + "\n"
         )
         for issue in issues():
-            total_perguntas_apos_issue = 0
-            total_perguntas_antes_issue = 0
+
+            data_criacao_issue = dateparser.parse(
+                        issue['Data de criacao'])
+
+            menor_data_criacao_pergunta = None
 
             if(issue["Titulo do Projeto"] is not None and issue["ID"] is not None):
                 result = call(issue["Titulo do Projeto"], issue["ID"])
@@ -96,11 +103,9 @@ def main():
                                        ]['respostas'] += pergunta["answer_count"]
                                        
                     pergunta_possui_resposta_aceita = 'accepted_answer_id' in pergunta
+
                     if(pergunta_possui_resposta_aceita and pergunta['accepted_answer_id'] is not None):
                         qtd_respostas_por_pergunta.append(pergunta['answer_count'])
-
-                    issue_created_at = dateparser.parse(
-                        issue['Data de criacao'])
 
                     if(issue["Estado"] == "CLOSED"):
                         issues_fechadas += 1
@@ -112,6 +117,14 @@ def main():
                     question_created_at = datetime.fromtimestamp(
                         pergunta["creation_date"])
 
+                    if(question_created_at < data_criacao_issue):
+                        total_perguntas_antes_issue += 1
+                    elif(question_created_at > data_criacao_issue):
+                        total_perguntas_apos_issue += 1
+
+                    if(menor_data_criacao_pergunta is None or question_created_at < menor_data_criacao_pergunta):
+                        menor_data_criacao_pergunta = question_created_at
+
                     if(pergunta["is_answered"]):
                         question_answered_at = datetime.fromtimestamp(
                             pergunta["last_activity_date"])
@@ -122,6 +135,15 @@ def main():
                         dif = issue_closed_at - question_answered_at
                         if(dif.days <= 7):
                             issues_fechadas_apos_resposta += 1
+
+                if(menor_data_criacao_pergunta is not None and menor_data_criacao_pergunta < data_criacao_issue):
+                    issues_criadas_apos += 1
+                elif(menor_data_criacao_pergunta is not None and menor_data_criacao_pergunta > data_criacao_issue):
+                    issues_criadas_antes +=1
+
+        #Sleep para evitar muitas chamadas na API do SO
+        time.sleep(3)
+
 
     impacto_issues = total_geral_respostas / total_geral_perguntas
 
@@ -144,6 +166,10 @@ def main():
     print(f"RQ3: resultados salvos em arquivo")
     print(f"RQ4: {mediana_respostas}")
     print(f"RQ5: {issues_resolvidas_pelo_SO}%")
+    print(f"RQ6: Issues criadas antes das perguntas: {issues_criadas_antes}")
+    print(f"RQ6: Issues criadas apos as perguntas: {issues_criadas_apos}")
+    print(f"RQ6: Perguntas criadas antes das issues: {total_perguntas_antes_issue}")
+    print(f"RQ6: Perguntas criadas apos as issues: {total_perguntas_apos_issue}")
 
 
 if __name__ == "__main__":
