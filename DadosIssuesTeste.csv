@@ -1,0 +1,17 @@
+Titulo do Projeto;Titulo da Issue;ID;Total de comentarios;Estado;Data de criacao;Data de atualizacao;Data de conclusao;URL da issue
+tensorflow/tensorflow;Add support for Python 3.x;1;48;CLOSED;09/11/15 14:21:11;14/11/17 20:59:56;08/12/15 00:03:00;https://github.com/tensorflow/tensorflow/issues/1
+tensorflow/tensorflow;OSX Yosemite "can't determine number of CPU cores: assuming 4";2;4;CLOSED;09/11/15 15:00:48;14/11/17 21:54:36;09/11/15 15:02:57;https://github.com/tensorflow/tensorflow/issues/2
+tensorflow/tensorflow;JVM, .NET Language Support;3;19;CLOSED;09/11/15 15:11:28;01/02/17 07:57:22;01/02/17 07:57:22;https://github.com/tensorflow/tensorflow/issues/3
+keras-team/keras;pooling size > stride;3;3;CLOSED;28/03/15 17:49:03;28/03/15 20:13:30;28/03/15 20:07:55;https://github.com/keras-team/keras/issues/3
+keras-team/keras;Create a setup.py;4;0;CLOSED;28/03/15 19:32:40;28/03/15 19:47:35;28/03/15 19:47:35;https://github.com/keras-team/keras/issues/4
+keras-team/keras;Issues loading sub-modules;7;2;CLOSED;29/03/15 12:43:30;30/03/15 01:51:15;29/03/15 23:18:53;https://github.com/keras-team/keras/issues/7
+keras-team/keras;any plan to add the support of maxout;80;2;CLOSED;24/04/15 03:16:19;25/05/15 16:39:53;25/05/15 16:39:53;https://github.com/keras-team/keras/issues/80
+keras-team/keras;Fix batch normalization during test time;81;12;CLOSED;24/04/15 12:17:27;06/02/17 20:30:57;06/02/17 20:30:57;https://github.com/keras-team/keras/issues/81
+keras-team/keras;LSTM - Sequences with different num of time steps;85;39;CLOSED;26/04/15 18:59:47;19/07/19 01:34:48;08/06/15 00:35:12;https://github.com/keras-team/keras/issues/85
+pytorch/pytorch;loss functions targets shouldn't have to declare requires_grad = False;41;1;CLOSED;21/09/16 00:20:34;06/10/16 18:45:28;06/10/16 18:45:27;https://github.com/pytorch/pytorch/issues/41
+pytorch/pytorch;Rename CELoss to CrossEntropyLoss;42;1;CLOSED;21/09/16 00:21:52;25/09/16 01:18:10;25/09/16 01:18:10;https://github.com/pytorch/pytorch/issues/42
+pytorch/pytorch;fix bad error message;43;3;CLOSED;21/09/16 00:59:35;25/09/16 23:19:31;25/09/16 23:19:31;https://github.com/pytorch/pytorch/issues/43
+scikit-learn/scikit-learn;RandomizedPCA does not have rst doc;65;3;CLOSED;26/01/11 14:14:57;27/01/11 08:18:52;27/01/11 08:08:08;https://github.com/scikit-learn/scikit-learn/issues/65
+scikit-learn/scikit-learn;Add test for multiple drops on LAR;66;5;OPEN;27/01/11 08:00:56;29/09/16 13:43:40;None;https://github.com/scikit-learn/scikit-learn/issues/66
+scikit-learn/scikit-learn;decision_function for sparse SVC (was: make sparse.svm first-class citizens);73;6;CLOSED;02/02/11 15:17:15;26/03/15 17:52:47;26/03/15 17:52:47;https://github.com/scikit-learn/scikit-learn/issues/73
+scikit-learn/scikit-learn;Pass cv as a class parameter to all *CV models;75;2;CLOSED;07/02/11 10:35:21;18/12/11 12:30:30;18/12/11 12:30:30;https://github.com/scikit-learn/scikit-learn/issues/75
