@@ -168,11 +168,11 @@ def main():
     # Gerando resultados RQ3:
     with open(sys.path[0] + "\\RQ3.csv", 'a+', encoding='utf-8') as rq3_file:
         rq3_file.write(
-            "Titulo do Projeto" + ";" + "Perguntas" + ";" + "Respostas" + "\n")
+            "Titulo do Projeto" + ";" + "Estrelas" + ";" + "Perguntas" + ";" + "Respostas" + "\n")
 
         for repo in dados_repositorios:
             rq3_file.write(
-                f"{repo};{dados_repositorios[repo]['perguntas']};{dados_repositorios[repo]['respostas']}\n")
+                f"{repo};{dados_repositorios[repo]['estrelas']};{dados_repositorios[repo]['perguntas']};{dados_repositorios[repo]['respostas']}\n")
     # Gerando resultados RQ5:
     issues_resolvidas_pelo_SO = (
         issues_fechadas_apos_resposta / issues_fechadas) * 100
