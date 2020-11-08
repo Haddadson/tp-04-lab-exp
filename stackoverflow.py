@@ -65,7 +65,8 @@ def main():
     # RQ04: Issues marcadas como bugs tendem a gerar muitas perguntas?
     # total_perguntas_issue
     # RQ05: Issues relacionadas a perguntas são fechadas quando respostas são aceitas?
-    issue_fechada_apos_resposta = 0
+    issues_fechadas = 0
+    issues_fechadas_apos_resposta = 0
     # RQ06: Os usuários costumam fazer perguntas no SO?
 
     total_geral_respostas = 0
@@ -90,9 +91,12 @@ def main():
                     total_geral_respostas += pergunta["answer_count"]
                     dados_repositorios[issue["Titulo do Projeto"]
                                        ]['respostas'] += pergunta["answer_count"]
+
                     issue_created_at = dateparser.parse(
                         issue['Data de criacao'])
+
                     if(issue["Estado"] == "CLOSED"):
+                        issues_fechadas += 1
                         issue_closed_at = dateparser.parse(
                             issue['Data de conclusao'])
                     else:
@@ -110,14 +114,11 @@ def main():
                     if(issue_closed_at is not None and question_answered_at is not None):
                         dif = issue_closed_at - question_answered_at
                         if(dif.days <= 7):
-                            issue_fechada_apos_resposta += 1
+                            issues_fechadas_apos_resposta += 1
 
     impacto_issues = total_geral_respostas / total_geral_perguntas
 
-    print(f"RQ1: {total_geral_perguntas}")
-    print(f"RQ2: {impactxo_issues}")
-    print(f"RQ3: resultados salvos em arquivo")
-    #Gerando resultados RQ3:
+    # Gerando resultados RQ3:
     with open(sys.path[0] + "\\RQ3.csv", 'a+', encoding='utf-8') as rq3_file:
         rq3_file.write(
             "Titulo do Projeto" + ";" + "Perguntas" + ";" + "Respostas" + "\n")
@@ -125,6 +126,14 @@ def main():
         for repo in dados_repositorios:
             rq3_file.write(
                 f"{repo};{dados_repositorios[repo]['perguntas']};{dados_repositorios[repo]['respostas']}\n")
+    # Gerando resultados RQ5:
+    issues_resolvidas_pelo_SO = (
+        issues_fechadas_apos_resposta / issues_fechadas) * 100
+
+    print(f"RQ1: {total_geral_perguntas}")
+    print(f"RQ2: {impacto_issues}")
+    print(f"RQ3: resultados salvos em arquivo")
+    print(f"RQ5: {issues_resolvidas_pelo_SO}%")
 
 
 if __name__ == "__main__":
